@@ -1,0 +1,11 @@
+version: "3.7"
+services:
+  fluentd:
+    image: fluent/fluentd:v1.9-1
+    ports:
+      - 24224:24224
+    volumes:
+      - type: bind
+        source: ./
+        target: /fluentd/etc
+    command: -c /fluentd/etc/fluentd.conf -v

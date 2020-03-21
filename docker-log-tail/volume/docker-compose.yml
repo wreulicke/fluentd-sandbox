@@ -1,0 +1,19 @@
+version: "3.7"
+services:
+  fluentd:
+    build: .
+    privileged: true
+    user: root
+    ports:
+      - 24224:24224
+    volumes:
+      - type: bind
+        source: ./
+        target: /fluentd/etc
+      - type: bind
+        source: ./
+        target: /fluentd/log/
+      - type: bind
+        source: /var/lib/docker/containers
+        target: /var/lib/docker/containers
+    command: -c /fluentd/etc/fluentd.conf
