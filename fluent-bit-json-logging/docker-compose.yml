@@ -1,0 +1,11 @@
+version: "3.7"
+services:
+  fluentd:
+    image: fluent/fluent-bit:1.3
+    ports:
+      - 24224:24224
+    volumes:
+      - type: bind
+        source: ./
+        target: /fluentd/etc
+    command: /fluent-bit/bin/fluent-bit -c /fluentd/etc/fluentd-bit.conf -v

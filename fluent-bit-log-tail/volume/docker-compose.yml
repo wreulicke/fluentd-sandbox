@@ -1,7 +1,7 @@
 version: "3.7"
 services:
   fluentd:
-    build: .
+    image: fluent/fluent-bit:1.3
     privileged: true
     user: root
     volumes:
@@ -9,9 +9,6 @@ services:
         source: ./
         target: /fluentd/etc
       - type: bind
-        source: ./
-        target: /fluentd/log/
-      - type: bind
         source: /var/lib/docker/containers
         target: /var/lib/docker/containers
-    command: -c /fluentd/etc/fluentd.conf
+    command: /fluent-bit/bin/fluent-bit -c /fluentd/etc/fluentd-bit.conf -v
