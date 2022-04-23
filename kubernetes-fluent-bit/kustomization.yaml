@@ -7,5 +7,5 @@ resources:
 configMapGenerator:
   - name: fluent-bit-config
     files:
-      - parsers.conf=./parser.conf
+      - parsers.conf=./parsers.conf
       - fluent-bit.conf=./fluent-bit.conf
